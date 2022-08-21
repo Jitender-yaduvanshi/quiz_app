@@ -1,20 +1,42 @@
 import 'package:flutter/material.dart';
+import './question.dart';
+import './answer.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  var questionIndex = 0;
-  void answerQuestion() {
-    questionIndex = questionIndex + 1;
-    print(questionIndex);
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyappState();
+  }
+}
+
+class _MyappState extends State<MyApp> {
+  var _questionIndex = 0;
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print(_questionIndex);
   }
 
   @override
   var question = [
-    'What\'s is Favourite color',
-    'What\'s your Favourite animal'
+    {
+      'questionText': 'What\'s is Favourite color?',
+      'answers': ['black', 'green', 'yellow', 'white'],
+    },
+    {
+      'questionText': 'What\'s your Favourite animal?',
+      'answers': ['LION', 'deer', 'cow', 'dog'],
+    },
+    {
+      'questionText': 'Who\'s your Favourite Actor?',
+      'answers': ['SRK', 'SALMAN KHAN', 'kartik', 'Akshay'],
+    }
   ];
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,23 +47,15 @@ class MyApp extends StatelessWidget {
           ),
           body: Column(
             children: [
-              Text(question[questionIndex]),
-              RaisedButton(
-                child: Text('Answer1'),
-                onPressed: answerQuestion,
-              ),
-              RaisedButton(
-                child: Text('Answer2'),
-                onPressed: answerQuestion,
-              ),
-              RaisedButton(
-                child: Text('Answer3'),
-                onPressed: answerQuestion,
-              ),
+              Question(
+                  question[_questionIndex]['questionText'] as String
+               ),
+              ...(question[_questionIndex]['answers'] as List<String>)
+                  .map((answers) {
+                return Answer(_answerQuestion, answers);
+              }).toList()
             ],
-          )
-          // Text("This is my first text"),
-          ),
+          )),
     );
   }
 }
