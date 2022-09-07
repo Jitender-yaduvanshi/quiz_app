@@ -28,15 +28,30 @@ class _MyappState extends State<MyApp> {
   final _question = const [
     {
       'questionText': 'What\'s is Favourite color?',
-      'answers': ['black', 'green', 'yellow', 'white'],
+      'answers': [
+        {'text': 'black', 'score': 5},
+        {'text': 'green', 'score': 4},
+        {'text': 'yellow', 'score': 3},
+        {'text': 'white', 'score': 2}
+      ],
     },
     {
       'questionText': 'What\'s your Favourite animal?',
-      'answers': ['LION', 'deer', 'cow', 'dog'],
+      'answers': [
+        {'text': 'black dear', 'score': 5},
+        {'text': 'elephant', 'score': 4},
+        {'text': 'dog', 'score': 3},
+        {'text': 'fox', 'score': 2}
+      ],
     },
     {
       'questionText': 'Who\'s your Favourite Actor?',
-      'answers': ['SRK', 'SALMAN KHAN', 'kartik', 'Akshay'],
+      'answers': [
+        {'text': 'SRK', 'score': 5},
+        {'text': 'SALMAN KHAN', 'score': 4},
+        {'text': 'kartik', 'score': 3},
+        {'text': 'AKSHAY KUMAR', 'score': 2}
+      ],
     }
   ];
   Widget build(BuildContext context) {
